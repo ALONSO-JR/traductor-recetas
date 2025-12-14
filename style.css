@@ -94,7 +94,7 @@ section[data-testid="stSidebar"] {
 }
 
 section[data-testid="stSidebar"] * {
-  color: white !important;
+  color: #000000 !important;
 }
 
 section[data-testid="stSidebar"] .stMarkdown {
