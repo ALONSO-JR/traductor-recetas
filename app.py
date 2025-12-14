@@ -36,8 +36,8 @@ except Exception as e:
 # --- FUNCIONES DEL CEREBRO ---
 def analizar_receta(image):
     try:
-        # Usamos 1.5-flash para asegurar estabilidad (el 2.5 a veces da error de cuota)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Usamos 2.5-flash para asegurar estabilidad (el 2.5 a veces da error de cuota)
+        model = genai.GenerativeModel('gemini-2.5-flash')
         
         # --- TU PROMPT ORIGINAL INTACTO ---
         prompt = """
