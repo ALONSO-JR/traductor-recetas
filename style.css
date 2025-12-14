@@ -1,4 +1,4 @@
-/* --- DISEÑO ULTRA VIBRANTE Y CREATIVO --- */
+//* --- DISEÑO ULTRA VIBRANTE Y CREATIVO (TU CÓDIGO ORIGINAL) --- */
 
 /* Fondo animado con gradiente más colorido y dinámico */
 .stApp {
@@ -7,6 +7,10 @@
   animation: gradientShift 15s ease infinite;
   font-family: "Inter", "Segoe UI", sans-serif;
   position: relative;
+  
+  /* --- ARREGLO 1: FIJAR EL FONDO PARA QUE NO SE CORTE AL BAJAR --- */
+  background-attachment: fixed !important;
+  overflow: visible !important;
 }
 
 /* Animación de gradiente para fondo dinámico */
@@ -92,8 +96,8 @@ section[data-testid="stSidebar"] {
   box-shadow: 5px 0 30px rgba(102, 126, 234, 0.3);
 
   /* --- AQUÍ ESTÁ EL TRUCO PARA EL ANCHO --- */
-  min-width: 300px !important;  /* Hazla más ancha aquí (ej: 350px o 400px) */
-  max-width: 300px !important;  /* Mantén el mismo número aquí para fijarla */
+  min-width: 300px !important;  
+  max-width: 300px !important;  
 }
 
 section[data-testid="stSidebar"] * {
@@ -356,4 +360,17 @@ div[data-testid="column"] {
 .stMarkdown a:hover {
   color: #764ba2;
   border-bottom-color: #764ba2;
+}
+
+/* --- CORRECCIÓN DE SCROLL (AGREGADO FINAL) --- */
+/* Esto libera la altura de la caja para que baje todo lo necesario */
+section.stMain {
+    overflow-y: auto !important; 
+    height: auto !important;
+    min-height: 100vh;
+}
+
+/* Esto da espacio abajo para que lo último no se corte */
+div[data-testid="stMainBlockContainer"] {
+    padding-bottom: 150px !important;
 }
