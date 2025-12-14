@@ -92,8 +92,8 @@ section[data-testid="stSidebar"] {
   box-shadow: 5px 0 30px rgba(102, 126, 234, 0.3);
 
   /* --- AQUÍ ESTÁ EL TRUCO PARA EL ANCHO --- */
-  min-width: 350px !important;  /* Hazla más ancha aquí (ej: 350px o 400px) */
-  max-width: 350px !important;  /* Mantén el mismo número aquí para fijarla */
+  min-width: 300px !important;  /* Hazla más ancha aquí (ej: 350px o 400px) */
+  max-width: 300px !important;  /* Mantén el mismo número aquí para fijarla */
 }
 
 section[data-testid="stSidebar"] * {
