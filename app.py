@@ -28,8 +28,9 @@ def analizar_receta(image):
         model = genai.GenerativeModel('gemini-2.5-flash')
         prompt = """
         Transcribe esta receta médica.
+        primero todo los datos del doctor y luego todos del paciente
         Extrae: Medicamento, Dosis, Frecuencia e Instrucciones.
-        Si hay abreviaturas, complétalas. Responde en español claro.
+        Si hay abreviaturas, complétalas y si hay observaciones se lo mas exacto en lo escrito. Responde en español claro.
         """
         response = model.generate_content([prompt, image])
         return response.text
