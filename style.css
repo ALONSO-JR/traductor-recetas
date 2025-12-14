@@ -1,4 +1,6 @@
-//* --- DISEÑO ULTRA VIBRANTE Y CREATIVO (TU CÓDIGO ORIGINAL) --- */
+/* ================================================================= */
+/* 🎨 TU DISEÑO ULTRA VIBRANTE ORIGINAL (INTACTO)                    */
+/* ================================================================= */
 
 /* Fondo animado con gradiente más colorido y dinámico */
 .stApp {
@@ -8,32 +10,23 @@
   font-family: "Inter", "Segoe UI", sans-serif;
   position: relative;
   
-  /* --- ARREGLO 1: FIJAR EL FONDO PARA QUE NO SE CORTE AL BAJAR --- */
+  /* ESTO ES CRUCIAL: Mantiene tu fondo fijo para que no se corte */
   background-attachment: fixed !important;
   overflow: visible !important;
 }
 
 /* Animación de gradiente para fondo dinámico */
 @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Overlay para mejorar legibilidad sobre el fondo animado */
 .stApp::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   z-index: 0;
@@ -41,10 +34,7 @@
 }
 
 /* Asegurar que el contenido esté sobre el overlay */
-.stApp > * {
-  position: relative;
-  z-index: 1;
-}
+.stApp > * { position: relative; z-index: 1; }
 
 /* Título con efecto neón y animación */
 h1 {
@@ -64,13 +54,8 @@ h1 {
 }
 
 @keyframes titlePulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
 /* Subtítulos con colores vibrantes */
@@ -88,6 +73,7 @@ h3 {
   font-size: 1.5rem !important;
 }
 
+/* BARRA LATERAL (CONFIGURACIÓN PARA PC) */
 section[data-testid="stSidebar"] {
   background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   padding: 25px;
@@ -95,18 +81,13 @@ section[data-testid="stSidebar"] {
   backdrop-filter: blur(10px);
   box-shadow: 5px 0 30px rgba(102, 126, 234, 0.3);
 
-  /* --- AQUÍ ESTÁ EL TRUCO PARA EL ANCHO --- */
+  /* ANCHO FIJO SOLO PARA PC */
   min-width: 300px !important;  
   max-width: 300px !important;  
 }
 
-section[data-testid="stSidebar"] * {
-  color: #000000 !important;
-}
-
-section[data-testid="stSidebar"] .stMarkdown {
-  color: white !important;
-}
+section[data-testid="stSidebar"] * { color: #000000 !important; }
+section[data-testid="stSidebar"] .stMarkdown { color: white !important; }
 
 /* Títulos en sidebar con efecto brillante */
 section[data-testid="stSidebar"] h2,
@@ -170,17 +151,12 @@ div.stButton > button {
 div.stButton > button::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+  top: 0; left: -100%; width: 100%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
   transition: left 0.5s;
 }
 
-div.stButton > button:hover::before {
-  left: 100%;
-}
+div.stButton > button:hover::before { left: 100%; }
 
 div.stButton > button:hover {
   background: linear-gradient(135deg, #ff8c42 0%, #ff6b6b 50%, #ee5a6f 100%);
@@ -188,9 +164,7 @@ div.stButton > button:hover {
   box-shadow: 0 20px 50px rgba(255, 107, 107, 0.6);
 }
 
-div.stButton > button:active {
-  transform: translateY(-2px) scale(0.98);
-}
+div.stButton > button:active { transform: translateY(-2px) scale(0.98); }
 
 /* Botón de descarga con estilo tropical vibrante */
 div.stDownloadButton > button {
@@ -261,14 +235,8 @@ div[data-testid="column"]:hover {
 }
 
 @keyframes slideInRight {
-  from {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 /* Spinner con colores vibrantes */
@@ -312,43 +280,20 @@ div[data-testid="column"]:hover {
   font-weight: 800;
 }
 
-/* Scrollbar personalizado con colores vibrantes */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  border-radius: 10px;
-  border: 2px solid #f8f9fa;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #f093fb 0%, #764ba2 50%, #667eea 100%);
-}
+/* Scrollbar personalizado */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 10px; border: 2px solid #f8f9fa; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #f093fb 0%, #764ba2 50%, #667eea 100%); }
 
 /* Animación de entrada para columnas */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+div[data-testid="column"] { animation: fadeInUp 0.6s ease-out; }
 
-div[data-testid="column"] {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Efecto hover para elementos interactivos */
+/* Efecto hover links */
 .stMarkdown a {
   color: #667eea;
   font-weight: 600;
@@ -356,21 +301,46 @@ div[data-testid="column"] {
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
 }
+.stMarkdown a:hover { color: #764ba2; border-bottom-color: #764ba2; }
 
-.stMarkdown a:hover {
-  color: #764ba2;
-  border-bottom-color: #764ba2;
-}
-
-/* --- CORRECCIÓN DE SCROLL (AGREGADO FINAL) --- */
-/* Esto libera la altura de la caja para que baje todo lo necesario */
+/* CORRECCIÓN DE SCROLL (PARA QUE NO SE CORTE LA PÁGINA) */
 section.stMain {
     overflow-y: auto !important; 
     height: auto !important;
     min-height: 100vh;
 }
-
-/* Esto da espacio abajo para que lo último no se corte */
 div[data-testid="stMainBlockContainer"] {
     padding-bottom: 150px !important;
+}
+
+/* ================================================================= */
+/* 📱 MODO MÓVIL (AQUÍ ESTÁ LA INTELIGENCIA RESPONSIVA)              */
+/* ================================================================= */
+/* Esto se activa SOLO cuando la pantalla es de un celular */
+
+@media only screen and (max-width: 768px) {
+
+    /* 1. Anulamos el ancho fijo de 300px y le decimos que ocupe todo el ancho */
+    section[data-testid="stSidebar"] {
+        min-width: 100% !important; 
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* 2. Achicamos el Título Gigante para que no rompa la pantalla */
+    h1 {
+        font-size: 2.5rem !important;
+        padding: 20px 5px !important;
+    }
+
+    /* 3. Ajustamos los márgenes de las tarjetas para que quepan bien */
+    div[data-testid="column"] {
+        margin-bottom: 20px !important;
+        padding: 20px !important;
+    }
+
+    /* 4. Ajustamos el emoji gigante de bienvenida */
+    div[style*="font-size: 6rem"] {
+        font-size: 4rem !important;
+    }
 }
