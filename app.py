@@ -25,7 +25,7 @@ except Exception as e:
 # --- FUNCIONES DEL CEREBRO ---
 def analizar_receta(image):
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         prompt = """
         Eres un farmacéutico experto. Transcribe esta receta médica.
         INSTRUCCIONES:
