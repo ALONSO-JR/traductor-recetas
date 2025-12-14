@@ -1,157 +1,376 @@
-/* ================================================================= */
-/* 🎨 DISEÑO ULTRA VIBRANTE Y CREATIVO (BASE)                        */
-/* ================================================================= */
+//* --- DISEÑO ULTRA VIBRANTE Y CREATIVO (TU CÓDIGO ORIGINAL) --- */
 
-/* 1. FONDO ANIMADO (CONGELADO Y SEGURO) */
+/* Fondo animado con gradiente más colorido y dinámico */
 .stApp {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   font-family: "Inter", "Segoe UI", sans-serif;
+  position: relative;
   
-  /* CLAVE: Fondo fijo para evitar cortes al hacer scroll */
+  /* --- ARREGLO 1: FIJAR EL FONDO PARA QUE NO SE CORTE AL BAJAR --- */
   background-attachment: fixed !important;
   overflow: visible !important;
 }
 
+/* Animación de gradiente para fondo dinámico */
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* 2. ARREGLO DE SCROLL (LA CAJA INFINITA) */
-section.stMain {
-    overflow-y: auto !important;
-    height: auto !important;
-    min-height: 100vh;
+/* Overlay para mejorar legibilidad sobre el fondo animado */
+.stApp::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+  pointer-events: none;
 }
 
-div[data-testid="stMainBlockContainer"] {
-    padding-bottom: 150px !important; /* Colchón para PC */
+/* Asegurar que el contenido esté sobre el overlay */
+.stApp > * {
+  position: relative;
+  z-index: 1;
 }
 
-/* 3. BARRA LATERAL (ESTILO BASE PC) */
+/* Título con efecto neón y animación */
+h1 {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff8c42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 4rem !important;
+  text-align: center;
+  padding: 40px 20px;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Subtítulos con colores vibrantes */
+h2 {
+  color: #667eea;
+  font-weight: 700;
+  font-size: 2rem !important;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+}
+
+h3 {
+  color: #ee5a6f;
+  font-weight: 600;
+  font-size: 1.5rem !important;
+}
+
 section[data-testid="stSidebar"] {
   background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   padding: 25px;
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-  
-  /* En PC la queremos ancha y fija */
-  min-width: 350px !important;
-  max-width: 350px !important;
+  border-right: 3px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 0 30px rgba(102, 126, 234, 0.3);
+
+  /* --- AQUÍ ESTÁ EL TRUCO PARA EL ANCHO --- */
+  min-width: 300px !important;  
+  max-width: 300px !important;  
 }
 
 section[data-testid="stSidebar"] * {
+  color: #000000 !important;
+}
+
+section[data-testid="stSidebar"] .stMarkdown {
   color: white !important;
 }
 
-/* 4. TÍTULOS Y TEXTOS */
-h1 {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(255,255,255,0.4);
-  text-align: center;
+/* Títulos en sidebar con efecto brillante */
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.6rem !important;
+}
+
+/* Uploader con animación y diseño atractivo */
+section[data-testid="stSidebar"] .stFileUploader {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 25px;
+  border: 3px dashed rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backdrop-filter: blur(5px);
+}
+
+section[data-testid="stSidebar"] .stFileUploader:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: white;
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Info box con diseño glassmorphism */
+section[data-testid="stSidebar"] .stAlert {
+  background: rgba(255, 215, 0, 0.2) !important;
+  border-left: 5px solid #ffd700;
+  border-radius: 15px;
+  color: white !important;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón principal con animación de pulso y gradiente llamativo */
+div.stButton > button {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff8c42 100%);
+  color: white;
+  width: 100%;
+  height: 80px;
+  border-radius: 25px;
+  font-size: 22px;
   font-weight: 900;
-  font-size: 4rem !important; /* Grande en PC */
-  padding: 20px 0;
+  border: none;
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
 }
 
-h2, h3 { color: #2c3e50 !important; }
-
-.stMarkdown p {
-    font-size: 1.1rem;
-    line-height: 1.6;
+/* Efecto de brillo al pasar el cursor */
+div.stButton > button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
 }
 
-/* 5. TARJETAS Y CONTENEDORES */
+div.stButton > button:hover::before {
+  left: 100%;
+}
+
+div.stButton > button:hover {
+  background: linear-gradient(135deg, #ff8c42 0%, #ff6b6b 50%, #ee5a6f 100%);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(255, 107, 107, 0.6);
+}
+
+div.stButton > button:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Botón de descarga con estilo tropical vibrante */
+div.stDownloadButton > button {
+  background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 50%, #00d2ff 100%);
+  color: white;
+  width: 100%;
+  height: 65px;
+  border-radius: 20px;
+  font-size: 19px;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 10px 30px rgba(78, 205, 196, 0.5);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin-top: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+div.stDownloadButton > button:hover {
+  background: linear-gradient(135deg, #00d2ff 0%, #4ecdc4 50%, #44a08d 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(78, 205, 196, 0.6);
+}
+
+/* Columnas con efecto de tarjeta flotante y glassmorphism */
 div[data-testid="column"] {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   padding: 35px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(255,255,255,0.5);
-  transition: transform 0.3s ease;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 div[data-testid="column"]:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.25);
+  transform: translateY(-8px);
+  border-color: #667eea;
 }
 
-/* 6. BOTONES MODERNOS */
-div.stButton > button {
-  background: linear-gradient(90deg, #FF416C 0%, #FF4B2B 100%);
-  color: white;
-  height: 70px;
+/* Imágenes con bordes coloridos y efecto zoom */
+.stImage {
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  border: 4px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, #667eea, #764ba2, #f093fb) border-box;
+}
+
+.stImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
+}
+
+/* Mensaje de éxito con animación de entrada */
+.stSuccess {
+  background: linear-gradient(135deg, #d4f4dd 0%, #a8e6cf 50%, #7bed9f 100%);
+  border-left: 8px solid #4ecdc4;
   border-radius: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  border: none;
-  box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3);
-  transition: all 0.3s;
+  padding: 25px;
+  color: #1e5631;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+  animation: slideInRight 0.5s ease-out;
+  font-size: 1.1rem;
 }
 
-div.stButton > button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 15px 30px rgba(255, 75, 43, 0.5);
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-div.stDownloadButton > button {
-  background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
-  color: white;
-  height: 60px;
+/* Spinner con colores vibrantes */
+.stSpinner > div {
+  border-top-color: #ff6b6b !important;
+  border-right-color: #4ecdc4 !important;
+  border-bottom-color: #667eea !important;
+  border-left-color: #f093fb !important;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+/* Mensaje de info con estilo moderno */
+.stInfo {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
+  border-left: 8px solid #667eea;
+  border-radius: 20px;
+  padding: 25px;
+  color: #0d47a1;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  font-size: 1rem;
+}
+
+/* Texto markdown con mejor legibilidad */
+.stMarkdown {
+  line-height: 1.9;
+  color: #2d3436;
+  font-size: 1.05rem;
+}
+
+/* Resultado con diseño de tarjeta premium */
+.stMarkdown h3 {
+  margin-top: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #ffa502 100%);
   border-radius: 15px;
-  font-weight: bold;
-  border: none;
+  color: #2d3436;
+  box-shadow: 0 8px 25px rgba(253, 203, 110, 0.4);
+  border-left: 6px solid #ff8c42;
+  font-weight: 800;
 }
 
-/* ================================================================= */
-/* 📱 MODO MÓVIL (AQUÍ ESTÁ LA INTELIGENCIA ARTIFICIAL VISUAL)       */
-/* ================================================================= */
+/* Scrollbar personalizado con colores vibrantes */
+::-webkit-scrollbar {
+  width: 12px;
+}
 
-/* Estas reglas SOLO se activan si la pantalla mide menos de 768px (Celulares) */
-@media only screen and (max-width: 768px) {
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 10px;
+}
 
-    /* 1. Títulos más pequeños para que no se rompan */
-    h1 {
-        font-size: 2.5rem !important; /* Bajamos de 4rem a 2.5rem */
-        margin-bottom: 10px !important;
-    }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 10px;
+  border: 2px solid #f8f9fa;
+}
 
-    /* 2. Ajustar textos de bienvenida */
-    .stMarkdown p {
-        font-size: 1rem !important;
-        text-align: center !important;
-    }
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f093fb 0%, #764ba2 50%, #667eea 100%);
+}
 
-    /* 3. La barra lateral YA NO debe ser fija de 350px, sino fluida */
-    section[data-testid="stSidebar"] {
-        min-width: 100% !important; /* Ocupa todo el ancho al abrirse */
-        max-width: 100% !important;
-        width: 100% !important;
-    }
+/* Animación de entrada para columnas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    /* 4. Columnas: Quitar márgenes laterales y achicar padding */
-    div[data-testid="column"] {
-        padding: 20px !important;
-        margin-bottom: 20px !important; /* Separación entre tarjetas vertical */
-    }
-    
-    /* 5. Ajustar botones para dedos (más fáciles de tocar) */
-    div.stButton > button {
-        height: 60px !important;
-        font-size: 18px !important;
-    }
+div[data-testid="column"] {
+  animation: fadeInUp 0.6s ease-out;
+}
 
-    /* 6. Reducir el "colchón" de abajo (en el móvil no sobra tanto espacio) */
-    div[data-testid="stMainBlockContainer"] {
-        padding-bottom: 80px !important;
-        padding-top: 20px !important;
-    }
+/* Efecto hover para elementos interactivos */
+.stMarkdown a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
 
-    /* 7. Ocultar o reducir decoraciones grandes */
-    div[style*="font-size: 6rem"] { 
-        font-size: 4rem !important; /* El emoji del hospital más chico */
-    }
+.stMarkdown a:hover {
+  color: #764ba2;
+  border-bottom-color: #764ba2;
+}
+
+/* --- CORRECCIÓN DE SCROLL (AGREGADO FINAL) --- */
+/* Esto libera la altura de la caja para que baje todo lo necesario */
+section.stMain {
+    overflow-y: auto !important; 
+    height: auto !important;
+    min-height: 100vh;
+}
+
+/* Esto da espacio abajo para que lo último no se corte */
+div[data-testid="stMainBlockContainer"] {
+    padding-bottom: 150px !important;
 }
