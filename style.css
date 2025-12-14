@@ -1,28 +1,25 @@
 /* ================================================================= */
-/* 🎨 TU DISEÑO ULTRA VIBRANTE ORIGINAL (INTACTO)                    */
+/* 🎨 TU DISEÑO ULTRA VIBRANTE ORIGINAL (CON ARREGLOS)               */
 /* ================================================================= */
 
-/* Fondo animado con gradiente más colorido y dinámico */
+/* 1. FONDO ANIMADO */
 .stApp {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   font-family: "Inter", "Segoe UI", sans-serif;
-  position: relative;
   
-  /* ESTO ES CRUCIAL: Mantiene tu fondo fijo para que no se corte */
+  /* ARREGLO SCROLL 1: Fondo fijo para que no se mueva al bajar */
   background-attachment: fixed !important;
-  overflow: visible !important;
 }
 
-/* Animación de gradiente para fondo dinámico */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Overlay para mejorar legibilidad sobre el fondo animado */
+/* Overlay para legibilidad */
 .stApp::before {
   content: "";
   position: fixed;
@@ -32,56 +29,24 @@
   z-index: 0;
   pointer-events: none;
 }
-
-/* Asegurar que el contenido esté sobre el overlay */
 .stApp > * { position: relative; z-index: 1; }
 
-/* Título con efecto neón y animación */
-h1 {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff8c42 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: "Inter", sans-serif;
-  font-weight: 900;
-  font-size: 4rem !important;
-  text-align: center;
-  padding: 40px 20px;
-  letter-spacing: -2px;
-  margin-bottom: 10px;
-  text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
-  animation: titlePulse 3s ease-in-out infinite;
+/* 2. ARREGLO DE SCROLL (EL COLCHÓN) */
+/* Esto da espacio extra abajo para que el botón de descargar no se corte */
+div[data-testid="stMainBlockContainer"] {
+    padding-bottom: 200px !important; /* Aumentado a 200px por seguridad */
+    padding-top: 30px !important;
 }
 
-@keyframes titlePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-}
-
-/* Subtítulos con colores vibrantes */
-h2 {
-  color: #667eea;
-  font-weight: 700;
-  font-size: 2rem !important;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
-}
-
-h3 {
-  color: #ee5a6f;
-  font-weight: 600;
-  font-size: 1.5rem !important;
-}
-
-/* BARRA LATERAL (CONFIGURACIÓN PARA PC) */
+/* 3. BARRA LATERAL (FIXED SOLO EN PC) */
 section[data-testid="stSidebar"] {
   background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   padding: 25px;
-  border-right: 3px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   box-shadow: 5px 0 30px rgba(102, 126, 234, 0.3);
 
-  /* ANCHO FIJO SOLO PARA PC */
+  /* Solo fijamos ancho en PC, en móvil dejamos que Streamlit decida */
   min-width: 300px !important;  
   max-width: 300px !important;  
 }
@@ -89,7 +54,7 @@ section[data-testid="stSidebar"] {
 section[data-testid="stSidebar"] * { color: #000000 !important; }
 section[data-testid="stSidebar"] .stMarkdown { color: white !important; }
 
-/* Títulos en sidebar con efecto brillante */
+/* Estilos de Texto Sidebar */
 section[data-testid="stSidebar"] h2,
 section[data-testid="stSidebar"] h3 {
   color: white !important;
@@ -101,35 +66,51 @@ section[data-testid="stSidebar"] h3 {
   font-size: 1.6rem !important;
 }
 
-/* Uploader con animación y diseño atractivo */
+/* Uploader */
 section[data-testid="stSidebar"] .stFileUploader {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   padding: 25px;
   border: 3px dashed rgba(255, 255, 255, 0.6);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   backdrop-filter: blur(5px);
 }
-
 section[data-testid="stSidebar"] .stFileUploader:hover {
   background: rgba(255, 255, 255, 0.35);
   border-color: white;
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Info box con diseño glassmorphism */
+/* Info Box */
 section[data-testid="stSidebar"] .stAlert {
   background: rgba(255, 215, 0, 0.2) !important;
   border-left: 5px solid #ffd700;
   border-radius: 15px;
   color: white !important;
-  backdrop-filter: blur(5px);
-  padding: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Botón principal con animación de pulso y gradiente llamativo */
+/* 4. TÍTULOS PRINCIPALES */
+h1 {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff8c42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 4rem !important;
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 10px;
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+h2 { color: #667eea; font-weight: 700; font-size: 2rem !important; }
+h3 { color: #ee5a6f; font-weight: 600; font-size: 1.5rem !important; }
+
+/* 5. BOTONES Y TARJETAS */
 div.stButton > button {
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff8c42 100%);
   color: white;
@@ -140,33 +121,12 @@ div.stButton > button {
   font-weight: 900;
   border: none;
   box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.3s;
 }
-
-/* Efecto de brillo al pasar el cursor */
-div.stButton > button::before {
-  content: "";
-  position: absolute;
-  top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s;
-}
-
-div.stButton > button:hover::before { left: 100%; }
-
 div.stButton > button:hover {
-  background: linear-gradient(135deg, #ff8c42 0%, #ff6b6b 50%, #ee5a6f 100%);
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(255, 107, 107, 0.6);
 }
 
-div.stButton > button:active { transform: translateY(-2px) scale(0.98); }
-
-/* Botón de descarga con estilo tropical vibrante */
 div.stDownloadButton > button {
   background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 50%, #00d2ff 100%);
   color: white;
@@ -176,52 +136,24 @@ div.stDownloadButton > button {
   font-size: 19px;
   font-weight: 800;
   border: none;
-  box-shadow: 0 10px 30px rgba(78, 205, 196, 0.5);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   margin-top: 25px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-div.stDownloadButton > button:hover {
-  background: linear-gradient(135deg, #00d2ff 0%, #4ecdc4 50%, #44a08d 100%);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(78, 205, 196, 0.6);
-}
-
-/* Columnas con efecto de tarjeta flotante y glassmorphism */
 div[data-testid="column"] {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   padding: 35px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-div[data-testid="column"]:hover {
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.25);
-  transform: translateY(-8px);
-  border-color: #667eea;
-}
-
-/* Imágenes con bordes coloridos y efecto zoom */
 .stImage {
   border-radius: 25px;
-  overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s ease;
   border: 4px solid transparent;
   background: linear-gradient(white, white) padding-box, linear-gradient(135deg, #667eea, #764ba2, #f093fb) border-box;
 }
 
-.stImage:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
-}
-
-/* Mensaje de éxito con animación de entrada */
 .stSuccess {
   background: linear-gradient(135deg, #d4f4dd 0%, #a8e6cf 50%, #7bed9f 100%);
   border-left: 8px solid #4ecdc4;
@@ -229,118 +161,51 @@ div[data-testid="column"]:hover {
   padding: 25px;
   color: #1e5631;
   font-weight: 700;
-  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
-  animation: slideInRight 0.5s ease-out;
-  font-size: 1.1rem;
 }
 
-@keyframes slideInRight {
-  from { transform: translateX(100px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-/* Spinner con colores vibrantes */
-.stSpinner > div {
-  border-top-color: #ff6b6b !important;
-  border-right-color: #4ecdc4 !important;
-  border-bottom-color: #667eea !important;
-  border-left-color: #f093fb !important;
-  width: 50px !important;
-  height: 50px !important;
-}
-
-/* Mensaje de info con estilo moderno */
-.stInfo {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
-  border-left: 8px solid #667eea;
-  border-radius: 20px;
-  padding: 25px;
-  color: #0d47a1;
-  font-weight: 700;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-  font-size: 1rem;
-}
-
-/* Texto markdown con mejor legibilidad */
-.stMarkdown {
-  line-height: 1.9;
-  color: #2d3436;
-  font-size: 1.05rem;
-}
-
-/* Resultado con diseño de tarjeta premium */
 .stMarkdown h3 {
   margin-top: 25px;
   padding: 20px;
   background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #ffa502 100%);
   border-radius: 15px;
   color: #2d3436;
-  box-shadow: 0 8px 25px rgba(253, 203, 110, 0.4);
   border-left: 6px solid #ff8c42;
-  font-weight: 800;
 }
 
-/* Scrollbar personalizado */
+/* Scrollbar */
 ::-webkit-scrollbar { width: 12px; }
 ::-webkit-scrollbar-track { background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px; }
-::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 10px; border: 2px solid #f8f9fa; }
-::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #f093fb 0%, #764ba2 50%, #667eea 100%); }
-
-/* Animación de entrada para columnas */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-div[data-testid="column"] { animation: fadeInUp 0.6s ease-out; }
-
-/* Efecto hover links */
-.stMarkdown a {
-  color: #667eea;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-.stMarkdown a:hover { color: #764ba2; border-bottom-color: #764ba2; }
-
-/* CORRECCIÓN DE SCROLL (PARA QUE NO SE CORTE LA PÁGINA) */
-section.stMain {
-    overflow-y: auto !important; 
-    height: auto !important;
-    min-height: 100vh;
-}
-div[data-testid="stMainBlockContainer"] {
-    padding-bottom: 150px !important;
-}
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: 10px; }
 
 /* ================================================================= */
-/* 📱 MODO MÓVIL (AQUÍ ESTÁ LA INTELIGENCIA RESPONSIVA)              */
+/* 📱 MODO MÓVIL (ARREGLADO)                                         */
 /* ================================================================= */
-/* Esto se activa SOLO cuando la pantalla es de un celular */
-
 @media only screen and (max-width: 768px) {
 
-    /* 1. Anulamos el ancho fijo de 300px y le decimos que ocupe todo el ancho */
-    section[data-testid="stSidebar"] {
-        min-width: 100% !important; 
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-
-    /* 2. Achicamos el Título Gigante para que no rompa la pantalla */
+    /* 1. Títulos ajustados */
     h1 {
         font-size: 2.5rem !important;
         padding: 20px 5px !important;
     }
 
-    /* 3. Ajustamos los márgenes de las tarjetas para que quepan bien */
+    /* 2. Tarjetas con menos margen */
     div[data-testid="column"] {
         margin-bottom: 20px !important;
         padding: 20px !important;
     }
 
-    /* 4. Ajustamos el emoji gigante de bienvenida */
+    /* 3. Emoji de bienvenida ajustado */
     div[style*="font-size: 6rem"] {
         font-size: 4rem !important;
+    }
+
+    /* 4. IMPORTANTE: ELIMINÉ la regla que forzaba la barra lateral al 100% */
+    /* Ahora la barra lateral usará el comportamiento nativo (overlay) */
+    
+    section[data-testid="stSidebar"] {
+       /* Restablecemos anchos para que no sea agresivo en móvil */
+       min-width: auto !important;
+       max-width: none !important;
+       width: auto !important;
     }
 }
