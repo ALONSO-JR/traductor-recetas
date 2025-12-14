@@ -103,7 +103,7 @@ if archivo:
         st.subheader("🔮 Traducción Inteligente")
         
         if st.button("🚀 Traducir Ahora", type="primary"):
-            with st.spinner('🧠 Análisis de caligrafía ...'):
+            with st.spinner :
                 texto_resultado = analizar_receta(imagen)
                 
                 st.success("✅ ¡Análisis completado con éxito! Tu receta ha sido traducida.")
